@@ -1,4 +1,4 @@
-package ec.payment.employee.workday;
+package ec.payment.employee.service.workday;
 
 import ec.payment.employee.model.DayOfWeekWithTime;
 
@@ -6,30 +6,30 @@ import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.Duration;
 
-public class SuplementaryWorkDayPayment extends PaymentFees {
+public class ExtraordinaryWorkDayPayment extends PaymentFees {
     private final Duration duration;
     private final DayOfWeek dayOfWeek;
 
-    public SuplementaryWorkDayPayment(Duration duration, DayOfWeek dayOfWeek) {
+    public ExtraordinaryWorkDayPayment(Duration duration, DayOfWeek dayOfWeek) {
         this.duration = duration;
         this.dayOfWeek = dayOfWeek;
     }
 
-    public SuplementaryWorkDayPayment(DayOfWeekWithTime dayOfWeekWithTime) {
+    public ExtraordinaryWorkDayPayment(DayOfWeekWithTime dayOfWeekWithTime) {
         this.duration = dayOfWeekWithTime.getDuration();
         this.dayOfWeek = dayOfWeekWithTime.getDayOfWeek();
     }
 
     @Override
-    protected Duration getDuration() {
-        return this.duration;
+    protected BigDecimal getMonetaryValueByHour() {
+        if (dayOfWeek.query(isWeekend())) {
+            return BigDecimal.valueOf(30);
+        }
+        return BigDecimal.valueOf(25);
     }
 
     @Override
-    protected BigDecimal getMonetaryValueByHour() {
-        if (dayOfWeek.query(isWeekend())) {
-            return BigDecimal.valueOf(25);
-        }
-        return BigDecimal.valueOf(20);
+    protected Duration getDuration() {
+        return this.duration;
     }
 }

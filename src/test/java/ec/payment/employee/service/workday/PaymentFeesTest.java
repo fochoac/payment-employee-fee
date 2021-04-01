@@ -1,4 +1,4 @@
-package ec.payment.employee.workday;
+package ec.payment.employee.service.workday;
 
 import org.junit.Assert;
 import org.junit.Before;

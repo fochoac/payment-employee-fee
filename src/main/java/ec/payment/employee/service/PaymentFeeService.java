@@ -2,10 +2,10 @@ package ec.payment.employee.service;
 
 import ec.payment.employee.enumeration.WorkDayPeriodEnum;
 import ec.payment.employee.model.DayOfWeekWithTime;
-import ec.payment.employee.workday.ExtraordinaryWorkDayPayment;
-import ec.payment.employee.workday.NormalWorkDayPayment;
-import ec.payment.employee.workday.PaymentFees;
-import ec.payment.employee.workday.SuplementaryWorkDayPayment;
+import ec.payment.employee.service.workday.ExtraordinaryWorkDayPayment;
+import ec.payment.employee.service.workday.NormalWorkDayPayment;
+import ec.payment.employee.service.workday.PaymentFees;
+import ec.payment.employee.service.workday.SuplementaryWorkDayPayment;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
