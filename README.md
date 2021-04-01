@@ -54,6 +54,8 @@ The project use a layer architecture structured by:
 ## Methodology
 For the build de project I used Test Driven Domain with Clean Code.
 
+## GitHub Actions
+There is a action for build de project if you want to use for.
 
  
 
