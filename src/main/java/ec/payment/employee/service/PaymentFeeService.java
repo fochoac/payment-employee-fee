@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class PaymentFeeService {
+public class PaymentFeeService implements PaymentFeeServiceI {
     public static final String EQUAL_SEPARATOR = "=";
     public static final String COMMA_SEPARATOR = ",";
     public static final String AMOUNT_TO_PAY_TO_PRINT = "The amount to pay %s is: %s USD";

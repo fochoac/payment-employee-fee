@@ -3,7 +3,7 @@
 ## Description
 Project for calculate the payment fees for the employees.
 
-##Problem
+## Problem
 The company ACME offers their employees the flexibility to work the hours they want. They will pay for the hours worked based on the day of the week and time of day.
 
 ## Solution Proposed
@@ -11,11 +11,11 @@ Java provides a set of tools to check dates and times, so use the components fro
 
 Adicional, I used the Strategy Pattern with Template Pattern for performing operations to get the amount to pay to the employee.
 
-Finally, for print the final result, I used the service layer por expose the method for that.
+Finally, for print the final result, I used the facade pattern to expose the method for that.
 
 All code handle clean code and unit tests.
 
-##Prerequisites
+## Prerequisites
 The project use:
 - Java 8 or higher
 - Maven 3
@@ -49,7 +49,7 @@ The project use a layer architecture structured by:
 | exception | Handle personalized exceptions |
 | model | Handle plain java objects |
 | service | Handle the bussiness logic |
-| main | Handle the bussiness logic |
+| main | Main class |
 
 ## Methodology
 For the build de project I used Test Driven Domain with Clean Code.
