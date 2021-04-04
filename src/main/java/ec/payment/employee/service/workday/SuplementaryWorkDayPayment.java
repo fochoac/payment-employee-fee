@@ -16,8 +16,22 @@ public class SuplementaryWorkDayPayment extends PaymentFees {
     }
 
     public SuplementaryWorkDayPayment(DayOfWeekWithTime dayOfWeekWithTime) {
-        this.duration = dayOfWeekWithTime.getDuration();
-        this.dayOfWeek = dayOfWeekWithTime.getDayOfWeek();
+        this(dayOfWeekWithTime.getDuration(), dayOfWeekWithTime.getDayOfWeek());
+    }
+
+    @Override
+    protected DayOfWeek getDayOfWeek() {
+        return this.dayOfWeek;
+    }
+
+    @Override
+    protected BigDecimal getMonetaryValueByHourInMonday2Friday() {
+        return BigDecimal.valueOf(20L);
+    }
+
+    @Override
+    protected BigDecimal getMonetaryValueByHourInWeekend() {
+        return BigDecimal.valueOf(25);
     }
 
     @Override
@@ -25,11 +39,5 @@ public class SuplementaryWorkDayPayment extends PaymentFees {
         return this.duration;
     }
 
-    @Override
-    protected BigDecimal getMonetaryValueByHour() {
-        if (dayOfWeek.query(isWeekend())) {
-            return BigDecimal.valueOf(25);
-        }
-        return BigDecimal.valueOf(20);
-    }
+
 }

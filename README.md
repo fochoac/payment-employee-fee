@@ -7,6 +7,16 @@ Project for calculate the payment fees for the employees.
 The company ACME offers their employees the flexibility to work the hours they want. They will pay for the hours worked based on the day of the week and time of day.
 
 ## Solution Proposed
+The solution was analized considerated three principal elements:
+
+| WorkDay | Description |
+| ------ | ------ |
+| ExtraordinaryWorkDay | It contemplates the working hours that are carried out during the period: 00:01 - 09:00 |
+| NormalWorkDay | It contemplates the working hours that are carried out during the period: 09:01 - 18:00 |
+| SuplementaryWorkDay | It contemplates the working hours that are carried out during the period: 18:01 - 00:00 |
+
+From this analysis, the corresponding classes that support each type of workday were developed.
+
 Java provides a set of tools to check dates and times, so use the components from java.time package for performs those validations. 
 
 Adicional, I used the Strategy Pattern with Template Pattern for performing operations to get the amount to pay to the employee.
@@ -35,13 +45,17 @@ Execute in a terminal:
 java -jar payment-employee-fee-1.0.0-SNAPSHOT.jar ${parameter}
 ```
 
-Where ${parameter} is a data frame. For instance:
+Where ${parameter} is a .txt file with least five lines. For instance:
 ```text
+RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
+RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
+RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
+RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
 RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
 ```
 
 ## Architecture
-The project use a layer architecture structured by:
+The project uses a layer architecture structured by:
 
 | Folder | Description |
 | ------ | ------ |

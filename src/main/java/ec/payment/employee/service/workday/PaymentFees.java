@@ -16,9 +16,30 @@ public abstract class PaymentFees {
     }
 
 
-    protected abstract BigDecimal getMonetaryValueByHour();
+    protected abstract DayOfWeek getDayOfWeek();
+
+    protected abstract BigDecimal getMonetaryValueByHourInMonday2Friday();
+
+    protected abstract BigDecimal getMonetaryValueByHourInWeekend();
 
     protected abstract Duration getDuration();
+
+
+    private BigDecimal getMonetaryValueByMinute() {
+        final double numberOfMinutesByHour = 60D;
+        return BigDecimal.valueOf(getMonetaryValueByHour().doubleValue() / numberOfMinutesByHour);
+    }
+
+    private BigDecimal getMonetaryValueByHour() {
+        if (getDayOfWeek().query(isWeekend())) {
+            return getMonetaryValueByHourInWeekend();
+        }
+        return getMonetaryValueByHourInMonday2Friday();
+    }
+
+    private BigDecimal getNumberOfMinutes() {
+        return BigDecimal.valueOf(getDuration().toMinutes());
+    }
 
     protected TemporalQuery<Boolean> isWeekend() {
         return temporal ->
@@ -27,15 +48,4 @@ public abstract class PaymentFees {
 
 
     }
-
-    private BigDecimal getMonetaryValueByMinute() {
-        final double numberOfMinutesByHour = 60D;
-        return BigDecimal.valueOf(getMonetaryValueByHour().doubleValue() / numberOfMinutesByHour);
-    }
-
-    private BigDecimal getNumberOfMinutes() {
-        return BigDecimal.valueOf(getDuration().toMinutes());
-    }
-
-
 }

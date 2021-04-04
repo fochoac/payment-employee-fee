@@ -16,8 +16,7 @@ public class NormalWorkDayPayment extends PaymentFees {
     }
 
     public NormalWorkDayPayment(DayOfWeekWithTime dayOfWeekWithTime) {
-        this.duration = dayOfWeekWithTime.getDuration();
-        this.dayOfWeek = dayOfWeekWithTime.getDayOfWeek();
+        this(dayOfWeekWithTime.getDuration(), dayOfWeekWithTime.getDayOfWeek());
     }
 
     @Override
@@ -25,11 +24,20 @@ public class NormalWorkDayPayment extends PaymentFees {
         return this.duration;
     }
 
+
     @Override
-    protected BigDecimal getMonetaryValueByHour() {
-        if (dayOfWeek.query(isWeekend())) {
-            return BigDecimal.valueOf(20);
-        }
-        return BigDecimal.valueOf(15);
+    protected DayOfWeek getDayOfWeek() {
+        return this.dayOfWeek;
     }
+
+    @Override
+    protected BigDecimal getMonetaryValueByHourInMonday2Friday() {
+        return BigDecimal.valueOf(15L);
+    }
+
+    @Override
+    protected BigDecimal getMonetaryValueByHourInWeekend() {
+        return BigDecimal.valueOf(20L);
+    }
+
 }
