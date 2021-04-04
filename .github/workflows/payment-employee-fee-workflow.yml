@@ -33,5 +33,7 @@ jobs:
            java-version: 11
        - name: Build with Maven
          run: mvn -B package --file pom.xml
+       - name: Coverage Test
+         run: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true
        - name: Execute Static Code Analisys with SonarCloud
          run: mvn sonar:sonar -Dsonar.projectKey=payment-employee-fee -Dsonar.organization=fochoac -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.language=java
